@@ -1,6 +1,7 @@
 import React from "react";
 import { createMuiTheme, MuiThemeProvider, StylesProvider } from "@material-ui/core/styles";
 import { Navbar } from "../Navbar/Navbar";
+import { Map } from "../Map/Map";
 import "./App.scss";
 
 const theme = createMuiTheme({
@@ -30,9 +31,7 @@ const App = () => {
     <MuiThemeProvider theme={theme}>
       <StylesProvider injectFirst>
         <Navbar />
-        <div>
-          <p>Hello world!</p>
-        </div>
+        <Map />
       </StylesProvider>
     </MuiThemeProvider>
   );
