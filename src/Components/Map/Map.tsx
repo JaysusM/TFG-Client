@@ -4,15 +4,17 @@ import { Measurement } from "./Types";
 import SyncLoader from "react-spinners/SyncLoader";
 import "./Map.scss";
 import { withTheme } from "@material-ui/core/styles";
-import L, { LatLngExpression } from "leaflet";
+import { LatLngExpression } from "leaflet";
 import { Map as MapLeaflet, TileLayer } from "react-leaflet";
 // @ts-ignore
 import HeatMapLayer from "react-leaflet-heatmap-layer";
 
 const MLG_DEFAULT_LOCATION: LatLngExpression = [36.72354892, -4.427047];
 const gradient = {
-    0.1: '#89BDE0', 0.2: '#96E3E6', 0.4: '#82CEB6',
-    0.6: '#FAF3A5', 0.8: '#F5D98B', 1.0: '#DE9A96'
+    0.3: '#51a1d6',
+    0.6: '#ffee2e', 
+    0.8: '#fac32a', 
+    1.0: '#ff1f12'
   };
 
 
