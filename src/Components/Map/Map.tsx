@@ -11,9 +11,9 @@ import HeatMapLayer from "react-leaflet-heatmap-layer";
 
 const MLG_DEFAULT_LOCATION: LatLngExpression = [36.72354892, -4.427047];
 const gradient = {
-    0.3: '#51a1d6',
-    0.6: '#ffee2e', 
-    0.8: '#fac32a', 
+    0.0: '#51a1d6',
+    0.4: '#ffee2e', 
+    0.7: '#fac32a', 
     1.0: '#ff1f12'
   };
 
