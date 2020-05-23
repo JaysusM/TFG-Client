@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_API_URL: string = "http://floating-brook-69790.herokuapp.com";
+const BASE_API_URL: string = "https://floating-brook-69790.herokuapp.com";
 
 export const getMeasurements = () => {
     const url = BASE_API_URL + "/measurement";

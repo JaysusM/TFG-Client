@@ -6,11 +6,13 @@ export const useMeasurements = () => {
     const [measurements, setMeasurements] = useState<Array<Measurement>>();
     
     useEffect(() => {
-        getMeasurements().then((response) => {
-            console.log(response);
-            setMeasurements(response.data);
-        });
-    }, []);
+        setTimeout(() => {
+            getMeasurements().then((response) => {
+                console.log(response);
+                setMeasurements(response.data);
+            });
+        }, 5000);
+    });
 
     return measurements;
 };

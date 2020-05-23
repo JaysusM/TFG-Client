@@ -44,9 +44,7 @@ export const Map = withTheme((props: any) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
-        <HeatMapLayer 
-        fitBoundsOnLoad
-        fitBoundsOnUpdate
+        <HeatMapLayer
         points={getMeasurementsLocation()}
         longitudeExtractor={(m: any) => m[1]}
         latitudeExtractor={(m: any) => m[0]}
