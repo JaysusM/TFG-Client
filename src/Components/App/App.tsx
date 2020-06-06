@@ -27,11 +27,17 @@ const theme = createMuiTheme({
 });
 
 const App = () => {
+  const params: URLSearchParams = new URLSearchParams(window.location.search);
+
+  const mode: string | null = params.get("mode");
+  const FULLSCREEN_MODE: string = "fullscreen";
+  const isFullScreen: boolean = mode === FULLSCREEN_MODE;
+
   return (
     <MuiThemeProvider theme={theme}>
       <StylesProvider injectFirst>
-        <Navbar />
-        <Map />
+        {!isFullScreen && <Navbar />}
+        <Map fullScreen={isFullScreen} />
       </StylesProvider>
     </MuiThemeProvider>
   );

@@ -22,6 +22,11 @@ export const Map = withTheme((props: any) => {
   const measurements: Array<Measurement> | undefined = useMeasurements();
   const primaryColor = props.theme.palette.primary.main;
 
+  let mapWrapperClassNames = "map-wrapper";
+  if (props.fullScreen) {
+    mapWrapperClassNames += " map-wrapper-fullscreen";
+  }
+
   if (!measurements) {
     return (
       <div className="map-wrapper">
@@ -38,7 +43,7 @@ export const Map = withTheme((props: any) => {
   };
 
   return (
-    <div className="map-wrapper">
+    <div className={mapWrapperClassNames}>
       <MapLeaflet center={MLG_DEFAULT_LOCATION} zoom={13}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
