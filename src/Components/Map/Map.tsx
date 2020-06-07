@@ -36,9 +36,9 @@ export const Map = withTheme((props: any) => {
   }
 
   const getMeasurementsLocation = () => {
-    return measurements.map((measurement) => {
-      const [lat, lng] = measurement.coordenates.split(",");
-      return [Number(lat), Number(lng), measurement.value];
+    return measurements.map((measurement: Measurement) => {
+      const {latitude, longitude} = measurement.position;
+      return [latitude, longitude, measurement.value];
     });
   };
 
