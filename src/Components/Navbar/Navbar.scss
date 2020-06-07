@@ -2,3 +2,36 @@
     font-weight: 300;
     font-size: 1.20rem;
 }
+
+.filter-button {
+    margin-left: auto;
+
+    .MuiButton-label {
+        .MuiTypography-root {
+            padding-right: 15px;
+            text-transform: none;
+        }
+    }
+}
+
+.filter-popper {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 0 0 15px 15px;
+
+    .navbar-datepicker, .filter-button {
+        margin-top: 15px;
+        width: 100%;
+    }
+
+    .navbar-datepicker:first-child {
+        margin-top: 0;
+    }
+}
+
+div[role="tooltip"] {
+    z-index: 999;
+}

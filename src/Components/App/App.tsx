@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import { createMuiTheme, MuiThemeProvider, StylesProvider } from "@material-ui/core/styles";
 import { Navbar } from "../Navbar/Navbar";
 import { Map } from "../Map/Map";
 import "./App.scss";
+import { DateFilter } from "./Types";
 
 const theme = createMuiTheme({
   palette: {
@@ -28,6 +29,7 @@ const theme = createMuiTheme({
 
 const App = () => {
   const params: URLSearchParams = new URLSearchParams(window.location.search);
+  const [date, setDate] = useState<DateFilter>({});
 
   const mode: string | null = params.get("mode");
   const FULLSCREEN_MODE: string = "fullscreen";
@@ -36,8 +38,8 @@ const App = () => {
   return (
     <MuiThemeProvider theme={theme}>
       <StylesProvider injectFirst>
-        {!isFullScreen && <Navbar />}
-        <Map fullScreen={isFullScreen} />
+        {!isFullScreen && <Navbar setDate={setDate}/>}
+        <Map fullScreen={isFullScreen} date={date}/>
       </StylesProvider>
     </MuiThemeProvider>
   );
