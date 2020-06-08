@@ -7,12 +7,17 @@ import {
   Button,
   TextField,
 } from "@material-ui/core";
-import FilterListIcon from "@material-ui/icons/FilterList";
+import MenuIcon from "@material-ui/icons/Menu";
 import { NavBarProps } from "./Types";
+import SyncLoader from "react-spinners/SyncLoader";
+import {DateFilter} from "../App/Types";
 import "./Navbar.scss";
+import { getMeasurements } from "../../Utils/api";
+import { AxiosResponse } from "axios";
 
 export const Navbar: FunctionComponent<NavBarProps> = ({ setDate }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [isDownloading, setIsDownloading] = React.useState<boolean>(false);
   const [from, setFrom] = useState<String>();
   const [to, setTo] = useState<String>();
 
@@ -34,7 +39,27 @@ export const Navbar: FunctionComponent<NavBarProps> = ({ setDate }) => {
   const handleFilterClick = () => {
     setDate({
       from,
+      to
+    });
+  };
+
+  const handleDownloadClick = () => {
+    const filterDate: DateFilter = {
+      from,
       to,
+    };
+
+    setIsDownloading(true);
+
+    getMeasurements(filterDate).then((response: AxiosResponse) => {
+      setIsDownloading(false);
+      const fileData = JSON.stringify(response.data);
+      const blob = new Blob([fileData], {type: "application/json"});
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.download = `measurements${from ? "_" + from : ""}${to ? "_" + to : ""}.json`;
+      link.href = url;
+      link.click();
     });
   };
 
@@ -45,19 +70,19 @@ export const Navbar: FunctionComponent<NavBarProps> = ({ setDate }) => {
           Sound Viewer
         </Typography>
         <Button
-          className="filter-button"
+          className="navbar-menu-button"
           variant="outlined"
           color="secondary"
           onClick={handleClick}
         >
-          <FilterListIcon color="secondary" />
+          <MenuIcon color="secondary" />
         </Button>
         <Popper open={open} anchorEl={anchorEl} transition>
           <div className="filter-popper">
             <TextField
               type="date"
               label="From"
-              className="navbar-datepicker"
+              className="popper-datepicker"
               color="secondary"
               onChange={handleFromDate}
               InputLabelProps={{
@@ -67,7 +92,7 @@ export const Navbar: FunctionComponent<NavBarProps> = ({ setDate }) => {
             <TextField
               type="date"
               label="To"
-              className="navbar-datepicker"
+              className="popper-datepicker"
               color="secondary"
               onChange={handleToDate}
               InputLabelProps={{
@@ -83,6 +108,21 @@ export const Navbar: FunctionComponent<NavBarProps> = ({ setDate }) => {
             >
               Filter
             </Button>
+            {!isDownloading ? (
+              <Button
+                variant="contained"
+                color="primary"
+                className="filter-button"
+                disableElevation
+                onClick={handleDownloadClick}
+              >
+                Download Data
+              </Button>
+            ) : (
+              <div className="download-loader">
+                <SyncLoader color="#000000" size={8} />
+              </div>
+            )}
           </div>
         </Popper>
       </Toolbar>

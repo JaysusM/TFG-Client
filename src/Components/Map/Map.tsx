@@ -18,8 +18,8 @@ const gradient = {
 };
 
 export const Map = withTheme((props: any) => {
-  const measurements: Array<Measurement> | undefined = useMeasurements(props.date);
   const primaryColor = props.theme.palette.primary.main;
+  const measurements: Array<Measurement> | undefined = useMeasurements(props.date);
 
   let mapWrapperClassNames = "map-wrapper";
   if (props.fullScreen) {
