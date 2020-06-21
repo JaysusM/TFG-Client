@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, FunctionComponent} from "react";
 import { createMuiTheme, MuiThemeProvider, StylesProvider } from "@material-ui/core/styles";
 import { Navbar } from "../Navbar/Navbar";
 import { Map } from "../Map/Map";
@@ -27,7 +27,7 @@ const theme = createMuiTheme({
   },
 });
 
-const App = () => {
+const App: FunctionComponent = () => {
   const params: URLSearchParams = new URLSearchParams(window.location.search);
   const [date, setDate] = useState<DateFilter>({});
 

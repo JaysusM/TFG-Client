@@ -53,8 +53,8 @@ export const Map = withTheme((props: any) => {
           longitudeExtractor={(m: any) => m[1]}
           latitudeExtractor={(m: any) => m[0]}
           gradient={gradient}
-          intensityExtractor={(m: any) => m[2]}
-          max={1.6}
+          intensityExtractor={(m: any) => m[2] / 5}
+          max={1}
         />
       </MapLeaflet>
     </div>
