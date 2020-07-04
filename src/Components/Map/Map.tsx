@@ -8,6 +8,7 @@ import { LatLngExpression } from "leaflet";
 import { Map as MapLeaflet, TileLayer } from "react-leaflet";
 // @ts-ignore
 import HeatMapLayer from "react-leaflet-heatmap-layer";
+import { ColorLegend } from "./ColorLegend.tsx/ColorLegend";
 
 const MLG_DEFAULT_LOCATION: LatLngExpression = [36.72354892, -4.427047];
 const gradient = {
@@ -44,6 +45,7 @@ export const Map = withTheme((props: any) => {
 
   return (
     <div className={mapWrapperClassNames}>
+      <ColorLegend gradient={gradient}/>
       <MapLeaflet center={MLG_DEFAULT_LOCATION} zoom={13}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

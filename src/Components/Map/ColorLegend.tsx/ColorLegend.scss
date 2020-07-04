@@ -1,0 +1,26 @@
+.color-legend-container {
+    position: fixed;
+    top: 60px;
+    right: 10px;
+    height: 164px;
+    min-height: 100px;
+    width: 84px;
+    min-width: 50px;
+    z-index: 20000;
+    background-color: white;
+    border-radius: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid black;
+
+    .gradient-color {
+        margin: 7.5px;
+    }
+
+    .gradient-value {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-right: 5px;
+    }
+}
